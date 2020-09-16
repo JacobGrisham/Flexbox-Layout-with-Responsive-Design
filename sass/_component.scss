@@ -1,0 +1,570 @@
+// LOGO //
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+// SEARCH //
+.search {
+  flex: 0 0 40%;
+  justify-content: space-between;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $phone) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
+  &__input:focus + &__button {
+    background-color: var(--color-grey-light-3);
+  }
+  //  This makes the background of the icon the same as the input. Must declare background-color here. The declaration won't work anywhere else. //
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    padding: .7rem 2rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: var(--color-grey-light-2);
+    width: 90%;
+    transition: all .2s;
+    margin-right: -3.5rem;
+    // Causes icon to move on top of input //
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-grey-light-3);
+    }
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: var(--color-grey-light-4);
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: var(--color-grey-light-2);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-light-4);
+  }
+}
+
+
+// USER NAVIGATION //
+.user-nav {
+  display: flex;
+  // Second level flex container. This is quite common in practice //
+  align-items: center;
+  align-self: stretch;
+
+  & > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    // Third level of flex containers. This is quite common in practice //
+    align-items: center;
+    // Vertical alignment //
+  }
+
+  & > *:hover {
+    background-color: var(--color-grey-light-2);
+  }
+
+  &__icon-box {
+    position: relative;
+  }
+
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: var(--color-grey-dark-2);
+  }
+
+  &__notification{
+    font-size: .8rem;
+    height: var(--small-icon);
+    width: var(--small-icon);
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    position: absolute;
+    top: 1.5rem;
+    left: 3.5rem;
+
+    display: flex;
+    // 4th level of flex container //
+    justify-content: center;
+    align-items: center;
+    // Centering notification inside the red circle //
+  }
+
+  &__user-photo {
+    height: var(--medium-friend-photo);
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+}
+
+// SIDE NAVIGATION //
+
+.side-nav{
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+
+  @media only screen and (max-width: $tablet-portrait) {
+    display: flex;
+    margin: 0;
+  }
+
+  &__item {
+    cursor: pointer;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: .5rem;
+
+      @media only screen and (max-width: $tablet-portrait) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $tablet-portrait) {
+      flex: 1;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform .2s,
+                width .4s cubic-bezier(1,.0,0,1) .2s,
+                background-color .1s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    background-color: var(--color-primary);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    color: var(--color-grey-light-1);
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 3rem;
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: $tablet-portrait) {
+      justify-content: center;
+      padding: 2rem;
+    }
+    @media only screen and (max-width: $phone) {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+  }
+
+  &__icon {
+    width: var(--small-icon);
+    height: var(--small-icon);
+    fill: currentColor;
+    // Color of the parent or parent element //
+    margin: 0 2rem 0 -2rem;
+
+    @media only screen and (max-width: $phone) {
+      margin: 0;
+      width: 2.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+// LEGAL TEXT //
+.legal {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2.4rem;
+  color: var(--color-grey-light-4);
+
+  @media only screen and (max-width: $tablet-portrait) {
+    display: none;
+  }
+}
+
+
+// GALLERY //
+.gallery {
+  display:flex;
+
+  &__photo {
+    width: 100%;
+    display: block;
+    // Prevents white space on bottom on image //
+  }
+}
+
+// HOTEL OVERVIEW //
+.overview {
+  background-color: var(--color-white);
+  fill: var(--color-primary);
+  display: flex;
+  align-items: center;
+
+  &__heading {
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: 1rem 3rem;
+
+    @media only screen and (max-width: $phone) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
+  }
+
+  &__stars {
+    fill: inherit;
+    margin-right: auto;
+    // THIS IS A HUGE TIP WHEN USING FLEXBOX //
+
+    display: flex;
+
+  }
+
+  &__icon-star,
+  &__icon-location {
+    height: var(--small-icon);
+    width: var(--small-icon);
+    fill: inherit;
+    margin-right: .5rem;
+    
+  }
+
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  &__rating {
+    background-color: var(--color-primary-dark);
+    font-weight: 200;
+
+    color: var(--color-white);
+    margin-left: 3rem;
+    align-self: stretch;
+    padding: 0 2.25rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: $phone) {
+      padding: 0 1.5rem;
+    }
+
+    &-average {
+    font-size: 2.25rem;
+
+      @media only screen and (max-width: $phone) {
+        font-size: 1.8rem;
+      }
+    }
+
+    &-count {
+    font-size: .8rem;
+    text-transform: uppercase;
+
+      @media only screen and (max-width: $phone) {
+        font-size: .5rem;
+      }
+    }
+  }
+}
+
+// BUTTON INLINE //
+.btn-inline {
+  font-size: inherit;
+  color: var(--color-primary);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  padding: 2px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all .2s;
+
+  & span {
+    margin-left: 3px;
+    transition: margin-left .2s;
+  }
+
+  &:hover {
+    color: var(--color-grey-dark-1);
+
+    span {
+      margin-left: 8px;
+    }
+  }
+}
+
+// ANIMATION //
+@keyframes bouncing {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-medium);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+
+// PARAGRAPH //
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.list{
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem;
+  border-top: var(--small-border-bottom);
+  border-bottom: var(--small-border-bottom);
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: .7rem;
+  }
+
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: .7rem;
+
+    // Older browsers //
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
+
+    // Newer browsers - masks //
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    mask-image: url(../img/chevron-thin-right.svg);
+    mask-size: cover;
+    background-image: none;
+    }
+  }
+}
+
+// RECOMMEND //
+.recommend {
+  font-size: 1.2rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  align-items: center;
+
+  &__count {
+    margin-right: auto;
+  }
+
+  &_friends {
+    display: flex;
+
+  }
+
+  &__photo {
+    box-sizing: content-box;
+    height: var(--medium-friend-photo);
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+
+    &:not(:last-child) {
+      margin-right: -2rem;
+    }
+  }
+}
+
+// REVIEWS //
+.review {
+  box-shadow: var(--box-shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &__text {
+    margin-bottom: 2rem;
+    z-index: 10;
+    position: relative;
+  }
+
+  &__user {
+    display:flex;
+    align-items: center;
+  }
+
+  &__photo {
+    height: var(--medium-user-photo);
+    width: var(--medium-user-photo);
+    border-radius: 50%;
+    margin-right: 2rem;
+  }
+  &__user-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__user-name {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: .4rem;
+  }
+
+  &__user-date {
+    font-size: .95rem;
+    color: var(--color-grey-dark-3);
+  }
+
+  &__rating {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-left: auto;
+    color: var(--color-primary);
+  }
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: -2.75rem;
+    left: -1rem;
+    line-height: 1;
+    font-size: 20rem;
+    font-family: san-serif;
+    color: var(--color-grey-light-2);
+    z-index: 1;
+  }
+
+  @media only screen and (max-width: $tablet-portrait) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+// CALL TO ACTION //
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+  background-color: var(--color-white);
+
+  &__book-now {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  @media only screen and (max-width: $tablet-portrait) {
+    padding: 2.5rem 0;
+  }
+}
+
+.btn {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  animation: bouncing 1s infinite;
+
+  & > * {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    transition: all .2s;
+  }
+
+  &__visible {
+    padding: 2rem 7.5rem;
+  }
+
+  &__invisible {
+    position: absolute;
+    padding: 2rem 0;
+    left: 0;
+    top: -200%;
+  }
+
+  &:hover {
+    background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+  }
+
+  &:hover &__visible {
+    transform: translateY(100%);
+  }
+
+  &:hover &__invisible {
+    top: 0;
+  }
+}

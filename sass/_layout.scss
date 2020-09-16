@@ -1,0 +1,101 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto;
+  // This center the container inside its parent element (the body in this case) //
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow-medium);
+  min-height: 50rem;
+
+  @media only screen and (max-width: $tablet-landscape) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+.header {
+  height: 7rem;
+  background-color: var(--color-white);
+  border-bottom: var(--small-border-bottom);
+
+  font-size: 1.4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // icons are now vertically centered //
+
+  @media only screen and (max-width: $phone) {
+    flex-wrap: wrap;
+    height: 11rem;
+    align-content: space-around;
+  }
+}
+
+.content {
+  display: flex;
+  // All we need to start flexbox is to set the display to flex //
+  // Class content is our flex container and classes sidebar and hotel-view are our flex items //
+
+  @media only screen and (max-width: $tablet-portrait) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+
+  flex: 0 0 18%;
+  // horizontal spacing //
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // Vertical spacing //
+}
+
+.hotel-view {
+  background-color: var(--color-grey-light-4);
+  border-bottom: var(--small-border-bottom);
+  flex: 1;
+}
+
+.hotel-detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var( --color-grey-light-1);
+  border-bottom: var(--small-border-bottom);
+  font-size: 1.4rem;
+
+  @media only screen and (max-width: $tablet-portrait) {
+    padding: 3rem;
+  }
+  @media only screen and (max-width: $phone) {
+    flex-direction: column;
+  }
+}
+
+.description {
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow-medium);
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+  padding: 3rem;
+
+  @media only screen and (max-width: $tablet-portrait) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+  @media only screen and (max-width: $phone) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.user-reviews {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

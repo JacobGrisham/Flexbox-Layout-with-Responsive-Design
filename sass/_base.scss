@@ -1,0 +1,79 @@
+// CSS CUSTOM PROPERTIES (CSS VARIABLES) //
+:root {
+  // COLOR VARIABLES //
+  --color-primary: #eb2f64;
+  --color-primary-light: #FF3366;
+  --color-primary-dark: #BA265D;
+
+  --color-white: #fff;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  // BOX SHADOW //
+  --box-shadow-light: 0 2rem 6rem rgba(0,0,0,.3);
+  --box-shadow-medium: 0 1rem 4rem rgba(0,0,0,.25);
+
+  // ICON SIZE //
+  --small-icon: 1.75rem;
+
+  // FRIEND PHOTO SIZE //
+  --medium-friend-photo: 3.75rem;
+  --medium-user-photo: 4.5rem;
+
+  // BORDER BOTTOM //
+  --small-border-bottom: 1px solid var(--color-grey-light-2);
+
+}
+// Instead of using Sass variables in this project, we're using css custom properties, a.k.a. css variables. This allows us to use variables directly in CSS and we don't have to rely on Sass variables. The benefits include: 1) Doesn't require a preprocessor, 2) Can be manipulated in Javascript and edit them Devtools, 4) Easier to use with the calc() function, 5.) Within the cascade, they are inherited //
+// CSS variables must be defined within a delcaration block. They can be placed under any selector that we want, but the variables would only be available in that element and its children. Therefore we use the root pseudoclass. It has a higher specificity than html. //
+
+// MEDIA QUERY VARIABLES //
+$phone: 37.5em;             // 600px/16px = 37.5 //
+$tablet-portrait: 56.75em;  // 900px/16px = 56.75 //
+$tablet-landscape: 75em;    // 1200px/16px = 75 // 
+$big-desktop: 112.5em;      // 1800px/16px = 112.5 // 
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px(desired)/16px(default)=62.5%. Therefore, the font-size is now 10px, where 1rem = 10px //
+
+  @media only screen and (max-width: $tablet-landscape) {
+    font-size: 50%;
+  }
+}
+
+body {
+  // BACKGROUND //
+  background-image: linear-gradient(to right bottom, var(--color-primary-light),  var(--color-primary-dark));
+  background-size: cover;
+  background-repeat: no-repeat;
+  // We use this to prevent the washboard effect //
+
+  // TEXT //
+  color: var(--color-grey-dark-2);
+  font-family: 'Open Sans', sans-serif;
+  // In case Open Sans isn't compaitable, we set the backup as sans-serif //
+  font-weight: 400;
+  line-height: 1.6;
+
+  min-height: 100vh;
+}
